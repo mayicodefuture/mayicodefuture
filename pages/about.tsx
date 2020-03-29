@@ -1,11 +1,11 @@
-import { Header } from "../components/layout";
+import { Header, Container } from "components/layout";
 
 const about = () => {
   return (
-    <>
+    <section id="about">
       <Header />
-      <div>About</div>
-    </>
+      <Container>About me</Container>
+    </section>
   );
 };
 

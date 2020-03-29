@@ -1,0 +1,72 @@
+/* purgecss start ignore */
+@tailwind base;
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+h1 {
+  font-size: 1.6rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+h4 {
+  font-size: 1rem;
+}
+
+h5 {
+  font-size: 0.8rem;
+}
+
+h6 {
+  font-size: 0.65rem;
+}
+
+@tailwind components;
+
+/* Components */
+
+.btn {
+  @apply bg-blue-500 px-4 py-2 rounded-lg transition-all duration-100;
+}
+
+.btn:hover {
+  @apply bg-blue-700;
+}
+
+.btn:focus {
+  @apply shadow-outline outline-none;
+}
+
+/* Layout */
+
+#home {
+  @apply bg-cover bg-gray-700;
+  background-image: url("../public/unsplash-emile-perron.jpg");
+  background-blend-mode: hard-light;
+}
+
+.home-hello {
+  @apply absolute left-0 pl-4 top-1/2 text-white flex flex-col transform -translate-y-1/2;
+  width: 400px;
+}
+
+/* purgecss end ignore */
+
+@tailwind utilities;

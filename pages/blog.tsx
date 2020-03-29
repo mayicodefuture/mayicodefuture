@@ -1,11 +1,11 @@
-import { Header } from "../components/layout";
+import { Header, Container } from "components/layout";
 
 const Blog = () => {
   return (
-    <>
+    <section id="blog">
       <Header />
-      <div>Blog</div>
-    </>
+      <Container>Blog</Container>
+    </section>
   );
 };
 
