@@ -1,4 +1,5 @@
 import { GetServerSideProps, NextPage } from 'next';
+import Head from 'next/head';
 import Link from 'next/link';
 import { IoMdArrowRoundBack, IoMdArrowRoundForward } from 'react-icons/io';
 import { GithubProps } from 'shared/types';
@@ -10,6 +11,11 @@ const Blog: NextPage<GithubProps> = ({ data }) => {
   const { name, company, avatar_url } = data;
   return (
     <section id="blog">
+      <Head>
+        <title>Blog</title>
+        <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <Header name={name} company={company} avatarUrl={avatar_url} />
       <Container>
         <div className="flex flex-col items-center justify-center h-screen">

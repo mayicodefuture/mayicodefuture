@@ -59,7 +59,7 @@ h6 {
 #home {
   @apply bg-cover bg-gray-700;
   background-image: url("../public/bg-main.jpg");
-  background-blend-mode: hard-light;
+  background-position: center;
 }
 /* purgecss end ignore */
 
