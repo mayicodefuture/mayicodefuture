@@ -43,7 +43,7 @@ h6 {
 /* Components */
 
 .btn {
-  @apply bg-blue-500 px-4 py-2 rounded-lg transition-all duration-100;
+  @apply text-white bg-blue-500 px-4 py-2 rounded-lg transition-all duration-100;
 }
 
 .btn:hover {
@@ -61,12 +61,6 @@ h6 {
   background-image: url("../public/unsplash-emile-perron.jpg");
   background-blend-mode: hard-light;
 }
-
-.home-hello {
-  @apply absolute left-0 pl-4 top-1/2 text-white flex flex-col transform -translate-y-1/2;
-  width: 400px;
-}
-
 /* purgecss end ignore */
 
 @tailwind utilities;
