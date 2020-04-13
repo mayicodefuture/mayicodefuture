@@ -1,13 +1,18 @@
-import { Header, Container } from "components/layout";
-import { FaArrowRight } from "react-icons/fa";
-import Link from "next/link";
+import { GetServerSideProps, NextPage } from 'next';
+import Link from 'next/link';
+import { FaArrowRight } from 'react-icons/fa';
+import { GithubProps } from 'shared/types';
 
-const Index = () => {
+import { Container, Header } from 'components/layout';
+import { githubApi } from 'services/api';
+
+const Index: NextPage<GithubProps> = ({ data }) => {
+  const { name, company, avatar_url } = data;
   return (
     <section id="home" className="h-screen">
-      <Header />
+      <Header name={name} company={company} avatarUrl={avatar_url} />
       <Container className="relative h-full">
-        <div className="home-hello">
+        <div className="absolute w-full px-4 sm:px-0 mt-48 sm:mt-0 mb-6 -translate-x-1/2 sm:translate-x-0 left-1/2 sm:left-0 items-center sm:items-start text-center sm:pl-4 sm:top-1/2 text-white flex flex-col transform sm:-translate-y-1/2">
           <h1 className="mb-2 font-bold">Hi, dear guest!</h1>
           <p>Welcome to my personal page</p>
           <p>
@@ -29,6 +34,12 @@ const Index = () => {
       </Container>
     </section>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const data = await githubApi.getProfile();
+
+  return { props: { data } };
 };
 
 export default Index;

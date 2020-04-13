@@ -1,6 +1,10 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { Container } from "../Container";
+import { NextComponentType } from 'next';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+
+import { githubApi } from 'services/api';
+
+import { Container } from '../Container';
 
 type LinkProps = {
   href: string;
@@ -24,30 +28,47 @@ const HeaderLink: React.FC<LinkProps> = ({ href, activeLink, children }) => {
   );
 };
 
-export const Header = () => {
+type Props = {
+  name: string;
+  company: string;
+  avatarUrl: string;
+};
+
+export const Header: React.FC<Props> = ({ name, company, avatarUrl }) => {
   const { pathname } = useRouter();
 
   return (
     <nav className="py-8 absolute w-full z-10" aria-labelledby="navbar">
-      <Container className="flex justify-between items-center">
+      <Container className="flex flex-col sm:flex-row justify-between items-center">
         <div className="flex items-center">
           <img
             className="w-16 rounded-full mr-4 shadow-md"
-            src="/maksym.jpg"
-            alt="avatar"
+            src={avatarUrl || "/maksym.jpg"}
+            alt={avatarUrl ? "avatar from github" : "avatar"}
           />
           <div className="flex flex-col">
             <h1 className={pathname === "/" ? "text-white" : ""}>
-              Maksym Boytsov
+              {name || "Maksym Boytsov"}
             </h1>
-            <h4
-              className={pathname === "/" ? "text-gray-400" : "text-gray-800"}
-            >
-              JavaScript Developer
-            </h4>
+            {company ? (
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={`https://github.com/${company.slice(1)}`}
+                className={pathname === "/" ? "text-gray-400" : "text-gray-800"}
+              >
+                {company}
+              </a>
+            ) : (
+              <p
+                className={pathname === "/" ? "text-gray-400" : "text-gray-800"}
+              >
+                JavaScript Developer
+              </p>
+            )}
           </div>
         </div>
-        <ul className="flex">
+        <ul className="flex mt-6 sm:mt-0">
           <HeaderLink href="/" activeLink={pathname}>
             Home
           </HeaderLink>
