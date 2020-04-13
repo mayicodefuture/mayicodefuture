@@ -59,6 +59,7 @@ const ContactLink: React.FC<ContactLinkProps> = ({ href, children }) => (
   <a
     className="flex items-center justify mt-2"
     href={href}
+    target="_blank"
     rel="noopener noreferrer"
   >
     {children}
