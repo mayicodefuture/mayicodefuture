@@ -12,11 +12,17 @@ type LinkProps = {
 };
 
 const HeaderLink: React.FC<LinkProps> = ({ href, activeLink, children }) => {
+  const { pathname } = useRouter();
+
   const classNames = (() => {
     if (activeLink === href) {
-      return "px-6 py-4";
+      return `px-6 py-4 ${pathname === "/" && "text-white"}`;
     }
-    return "px-6 py-4 transition-colors duration-150 text-blue-500 hover:text-black";
+    return `px-6 py-4 transition-colors duration-150 ${
+      pathname === "/"
+        ? "text-black hover:text-white"
+        : "text-gray-600 hover:text-black"
+    }`;
   })();
 
   return (
@@ -55,7 +61,7 @@ export const Header: React.FC<Props> = ({ name, company, avatarUrl }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 href={`https://github.com/${company.slice(1)}`}
-                className={pathname === "/" ? "text-gray-400" : "text-gray-800"}
+                className={pathname === "/" ? "text-gray-300" : "text-gray-800"}
               >
                 {company}
               </a>
