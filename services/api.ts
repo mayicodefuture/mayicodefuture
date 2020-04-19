@@ -1,10 +1,14 @@
 import fetch from 'isomorphic-unfetch';
 
-const githubApiUrl = "https://api.github.com";
+const baseUrl = "http://localhost:1337";
 
-export const githubApi = {
-  getProfile: async (): Promise<Response> => {
-    const res = await fetch(`${githubApiUrl}/users/mayicodefuture`);
+export const api = {
+  getArticles: async (): Promise<Response> => {
+    const res = await fetch(`${baseUrl}/articles`);
+    return await res.json();
+  },
+  getGithubProfile: async (): Promise<Response> => {
+    const res = await fetch("https://api.github.com/users/mayicodefuture");
     return await res.json();
   },
 };

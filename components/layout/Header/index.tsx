@@ -2,7 +2,7 @@ import { NextComponentType } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import { githubApi } from 'services/api';
+import { api } from 'services/api';
 
 import { Container } from '../Container';
 

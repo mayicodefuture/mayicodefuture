@@ -5,7 +5,7 @@ import { IoIosMail } from 'react-icons/io';
 import { GithubProps } from 'shared/types';
 
 import { Container, Header } from 'components/layout';
-import { githubApi } from 'services/api';
+import { api } from 'services/api';
 
 type ContactLinkProps = {
   href: string;
@@ -73,7 +73,7 @@ const ContactLink: React.FC<ContactLinkProps> = ({ href, children }) => (
 );
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const data = await githubApi.getProfile();
+  const data = await api.getGithubProfile();
 
   return { props: { data } };
 };

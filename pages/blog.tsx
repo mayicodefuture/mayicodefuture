@@ -5,7 +5,7 @@ import { IoMdArrowRoundBack, IoMdArrowRoundForward } from 'react-icons/io';
 import { GithubProps } from 'shared/types';
 
 import { Container, Header } from 'components/layout';
-import { githubApi } from 'services/api';
+import { api } from 'services/api';
 
 const Blog: NextPage<GithubProps> = ({ data }) => {
   const { name, company, avatar_url } = data;
@@ -42,7 +42,7 @@ const Blog: NextPage<GithubProps> = ({ data }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const data = await githubApi.getProfile();
+  const data = await api.getGithubProfile();
 
   return { props: { data } };
 };
