@@ -15,11 +15,6 @@ const About: NextPage<GithubProps> = ({ data }) => {
   const { name, company, avatar_url } = data;
   return (
     <section id="about">
-      <Head>
-        <title>About me</title>
-        <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
       <Header name={name} company={company} avatarUrl={avatar_url} />
       <Container className="absolute top-0 mt-48 mb-6 sm:mt-0 sm:bottom-1/2 sm:translate-y-1/2 left-1/2 transform -translate-x-1/2 text-center sm:w-2/3 lg:w-1/2">
         <h1 className="mb-4 font-bold">About me</h1>

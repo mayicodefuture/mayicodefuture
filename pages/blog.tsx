@@ -1,40 +1,62 @@
 import { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
-import Link from 'next/link';
-import { IoMdArrowRoundBack, IoMdArrowRoundForward } from 'react-icons/io';
 import { GithubProps } from 'shared/types';
 
 import { Container, Header } from 'components/layout';
 import { api } from 'services/api';
 
-const Blog: NextPage<GithubProps> = ({ data }) => {
+type Props = GithubProps & {
+  articles: {
+    id: number;
+    title: string;
+    content: string;
+    created_at: string;
+    updated_at: string;
+    coverImage: {
+      id: number;
+      name: string;
+      alternativeText: string;
+      caption: string;
+      width: string;
+      height: string;
+      hash: string;
+      ext: string;
+      mime: string;
+      size: number;
+      url: string;
+      previewUrl: string;
+      provider: string;
+      provider_metadata: any;
+      created_at: string;
+      updated_at: string;
+    };
+  }[];
+};
+
+const Blog: NextPage<Props> = ({ data, articles }) => {
   const { name, company, avatar_url } = data;
   return (
     <section id="blog">
-      <Head>
-        <title>Blog</title>
-        <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
       <Header name={name} company={company} avatarUrl={avatar_url} />
       <Container>
-        <div className="flex flex-col items-center justify-center h-screen">
-          <h1>Development in progress</h1>
-          <p className="mb-5">Come back later</p>
-          <div className="flex">
-            <Link href="/">
-              <button className="btn flex items-center mr-1">
-                <IoMdArrowRoundBack className="mr-2" />
-                Main page
-              </button>
-            </Link>
-            <Link href="/about">
-              <button className="btn flex items-center ml-1">
-                About me
-                <IoMdArrowRoundForward className="ml-2" />
-              </button>
-            </Link>
-          </div>
+        <div className="flex w-full">
+          {articles?.map((article, index) => {
+            if (index === 0) {
+              return <div className="w-1/2">First article</div>;
+            }
+            return (
+              <div>
+                <h1>{article.title}</h1>
+                <figure>
+                  <img
+                    src={process.env.BASE_URL + article.coverImage.url}
+                    alt={article.coverImage.alternativeText}
+                  />
+                  <figcaption>{article.coverImage.caption}</figcaption>
+                </figure>
+              </div>
+            );
+          })}
         </div>
       </Container>
     </section>
@@ -43,8 +65,9 @@ const Blog: NextPage<GithubProps> = ({ data }) => {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const data = await api.getGithubProfile();
+  const articles = await api.getArticles();
 
-  return { props: { data } };
+  return { props: { data, articles } };
 };
 
 export default Blog;

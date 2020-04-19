@@ -57,7 +57,7 @@ h6 {
 /* Layout */
 
 #home {
-  @apply bg-cover bg-gray-700;
+  @apply h-screen bg-cover bg-gray-700;
   background-image: url("../public/bg-main.jpg");
   background-position: center;
 }
