@@ -1,10 +1,8 @@
 import fetch from 'isomorphic-unfetch';
 
-const baseUrl = "http://localhost:1337";
-
 export const api = {
   getArticles: async (): Promise<Response> => {
-    const res = await fetch(`${baseUrl}/articles`);
+    const res = await fetch(`${process.env.BASE_URL}/articles`);
     return await res.json();
   },
   getGithubProfile: async (): Promise<Response> => {
