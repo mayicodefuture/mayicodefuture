@@ -66,7 +66,7 @@ const Blog: NextPage<Props> = ({ articles }) => {
             </p>
             <img
               className="rounded-lg"
-              src={process.env.BASE_URL + firstArticle?.coverImage.url}
+              src={process.env.BASE_URL + firstArticle?.coverImage?.url}
               alt={firstArticle?.coverImage.alternativeText}
             />
             <div className="flex justify-between flex-col sm:flex-row items-center">

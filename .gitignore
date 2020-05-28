@@ -17,3 +17,5 @@ sketch
 
 .env
 .env.build
+.env.development
+.env.production

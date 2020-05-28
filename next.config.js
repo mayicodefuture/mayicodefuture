@@ -4,10 +4,7 @@ module.exports = {
       '/home': { page: '/home' },
       '/about': { page: '/about' },
       '/blog': { page: '/blog' },
-      '/blog/1': { page: '/blog', query: { title: 'hello-world' } },
+      '/blog/1': { page: '/blog/1' },
     }
-  },
-  env: {
-    BASE_URL: 'http://localhost:1337',
   },
 }
