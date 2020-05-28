@@ -1,13 +1,13 @@
-import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { FaArrowLeft } from 'react-icons/fa';
-import { ArticleType } from 'shared/types';
-import showdown from 'showdown';
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { FaArrowLeft } from 'react-icons/fa'
+import { ArticleType } from 'shared/types'
+import showdown from 'showdown'
 
-import SocialShare from 'components/layout/SocialShare';
-import { Button, Tag } from 'components/ui';
-import { api } from 'services/api';
+import SocialShare from 'components/layout/SocialShare'
+import { Button, Tag } from 'components/ui'
+import { api } from 'services/api'
 
 type Props = {
   article: ArticleType
@@ -27,7 +27,7 @@ const Article: NextPage<Props> = ({ article }) => {
           <div className="space-x-3">
             <SocialShare
               title={article.title}
-              url={process.env.BASE_URL + router.asPath}
+              url={process.env.API_URL + router.asPath}
               description={article.description}
             />
           </div>
@@ -56,7 +56,7 @@ const Article: NextPage<Props> = ({ article }) => {
             <div>
               <img
                 className="rounded-md"
-                src={process.env.BASE_URL + article.coverImage.url}
+                src={process.env.API_URL + article?.coverImage.url}
                 alt={article.coverImage.alternativeText}
               />
             </div>
@@ -89,7 +89,7 @@ const Article: NextPage<Props> = ({ article }) => {
             <div className="mt-4 space-x-4">
               <SocialShare
                 title={article.title}
-                url={process.env.BASE_URL + router.asPath}
+                url={process.env.API_URL + router.asPath}
                 description={article.description}
               />
             </div>

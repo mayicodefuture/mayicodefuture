@@ -54,7 +54,7 @@ const Blog: NextPage<Props> = ({ articles }) => {
       )
     }
     return (
-      <div className="flex justify-between">
+      <div className="flex justify-between flex-col sm:flex-row">
         <div className="w-full sm:w-2/5 mb-16 sm:mb-0">
           <button
             className="cursor-pointer text-center px-4"
@@ -66,7 +66,7 @@ const Blog: NextPage<Props> = ({ articles }) => {
             </p>
             <img
               className="rounded-lg"
-              src={process.env.BASE_URL + firstArticle?.coverImage?.url}
+              src={process.env.API_URL + firstArticle?.coverImage.url}
               alt={firstArticle?.coverImage.alternativeText}
             />
             <div className="flex justify-between flex-col sm:flex-row items-center">
@@ -116,7 +116,7 @@ const Blog: NextPage<Props> = ({ articles }) => {
                 >
                   <img
                     className="rounded-lg"
-                    src={process.env.BASE_URL + article?.coverImage.url}
+                    src={process.env.API_URL + article?.coverImage.url}
                     alt={article?.coverImage.alternativeText}
                   />
                   <h2 className="text-base font-bold mt-4">{article?.title}</h2>
@@ -125,7 +125,7 @@ const Blog: NextPage<Props> = ({ articles }) => {
             </div>
           </div>
         ) : (
-          <div className="border-2 text-center px-4 rounded-md border-gray-700 border-dashed w-full sm:w-2/4 flex items-center justify-center space-y-2 flex-col">
+          <div className="border-2 text-center p-4 rounded-md border-gray-700 border-dashed w-full sm:w-2/4 flex items-center justify-center space-y-2 flex-col">
             <h3>More articles will come out in a bit</h3>
             <p className="pb-2">
               I will post more information on social medias if there will be a
