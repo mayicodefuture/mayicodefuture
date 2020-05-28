@@ -11,6 +11,8 @@ psd
 thumb
 sketch
 
+*.xd
+
 .next
 
 .env
