@@ -41,8 +41,6 @@ const Blog: NextPage<Props> = ({ articles }) => {
 
   const isRestArticles = restArticles.length > 1
 
-  console.log(articles)
-
   const handleArticleEnter = (id: string | number) => {
     router.push(`/blog/${id}`)
   }

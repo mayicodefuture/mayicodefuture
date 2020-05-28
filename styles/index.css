@@ -53,10 +53,4 @@ a {
   background-position: center;
 }
 
-@screen sm {
-  #article-buttons {
-    @apply bg-red;
-  }
-}
-
 @tailwind utilities;
