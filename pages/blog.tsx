@@ -1,16 +1,16 @@
-import format from 'date-fns/format';
-import parseISO from 'date-fns/parseISO';
-import { GetStaticProps, NextPage } from 'next';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { useState } from 'react';
-import { FaArrowRight } from 'react-icons/fa';
-import { ArticleType } from 'shared/types';
+import format from 'date-fns/format'
+import parseISO from 'date-fns/parseISO'
+import { GetStaticProps, NextPage } from 'next'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useState } from 'react'
+import { FaArrowRight } from 'react-icons/fa'
+import { ArticleType } from 'shared/types'
 
-import { SearchBar } from 'components/data';
-import { Container, Header } from 'components/layout';
-import { Button, Tag } from 'components/ui';
-import { api } from 'services/api';
+import { SearchBar } from 'components/data'
+import { Container, Header } from 'components/layout'
+import { Button, Tag } from 'components/ui'
+import { api } from 'services/api'
 
 type Props = {
   articles: ArticleType[]
@@ -41,6 +41,8 @@ const Blog: NextPage<Props> = ({ articles }) => {
 
   const isRestArticles = restArticles.length > 1
 
+  console.log(articles)
+
   const handleArticleEnter = (id: string | number) => {
     router.push(`/blog/${id}`)
   }
@@ -56,8 +58,8 @@ const Blog: NextPage<Props> = ({ articles }) => {
     return (
       <div className="flex justify-between">
         <div className="w-full sm:w-2/5 mb-16 sm:mb-0">
-          <div
-            className="cursor-pointer text-center"
+          <button
+            className="cursor-pointer text-center px-4"
             onClick={() => handleArticleEnter(firstArticle.id)}
           >
             <h1 className="text-2xl sm:text-3xl">{firstArticle.title}</h1>
@@ -91,15 +93,15 @@ const Blog: NextPage<Props> = ({ articles }) => {
                 )}
               </div>
               <div className="sm:text-right">
-                <p>
+                <p className="mb-1">
                   {format(parseISO(firstArticle.updated_at), 'dd MMM yyyy')}
                 </p>
-                <p className="text-gray-600 text-sm">
+                <p className="text-gray-600 text-sm mt-1">
                   {firstArticle.timeOfReading} minutes of reading
                 </p>
               </div>
             </div>
-          </div>
+          </button>
         </div>
         {isRestArticles ? (
           <div className="w-full sm:w-2/4">

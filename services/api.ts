@@ -1,5 +1,4 @@
-import fetch from 'isomorphic-unfetch';
-import { ArticleType } from 'shared/types';
+import { ArticleType } from 'shared/types'
 
 export const api = {
   getArticles: async (): Promise<ArticleType[]> => {
