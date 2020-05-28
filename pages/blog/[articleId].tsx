@@ -27,7 +27,7 @@ const Article: NextPage<Props> = ({ article }) => {
           <div className="space-x-3">
             <SocialShare
               title={article.title}
-              url={process.env.NEXT_PUBLIC_API_URL + router.asPath}
+              url={process.env.API_URL + router.asPath}
               description={article.description}
             />
           </div>
@@ -56,7 +56,7 @@ const Article: NextPage<Props> = ({ article }) => {
             <div>
               <img
                 className="rounded-md"
-                src={process.env.NEXT_PUBLIC_API_URL + article?.coverImage.url}
+                src={process.env.API_URL + article?.coverImage.url}
                 alt={article.coverImage.alternativeText}
               />
             </div>
@@ -89,7 +89,7 @@ const Article: NextPage<Props> = ({ article }) => {
             <div className="mt-4 space-x-4">
               <SocialShare
                 title={article.title}
-                url={process.env.NEXT_PUBLIC_API_URL + router.asPath}
+                url={process.env.API_URL + router.asPath}
                 description={article.description}
               />
             </div>
